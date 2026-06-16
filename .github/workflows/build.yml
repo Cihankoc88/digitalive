@@ -1,0 +1,50 @@
+name: Windows EXE Otomatik Üret
+
+on:
+  push:
+    branches: [ main, master ]
+  workflow_dispatch:
+
+jobs:
+  build-windows:
+    name: Windows için .exe paketle
+    runs-on: windows-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: 1. Kodu al
+        uses: actions/checkout@v4
+
+      - name: 2. Node.js kur (20 LTS)
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: 3. Bağımlılıkları indir (npm install)
+        run: npm install
+        env:
+          ELECTRON_CACHE: ${{ github.workspace }}/.cache/electron
+          ELECTRON_BUILDER_CACHE: ${{ github.workspace }}/.cache/electron-builder
+
+      - name: 4. Native modülleri yeniden derle (better-sqlite3)
+        run: npm run rebuild
+        continue-on-error: true
+
+      - name: 5. Windows .exe üret (Setup + Portable)
+        run: npm run build
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: 6. Üretilen .exe dosyalarını listele
+        run: dir dist
+        shell: cmd
+
+      - name: 7. .exe dosyalarını yükle
+        uses: actions/upload-artifact@v4
+        with:
+          name: DigitAlive-Windows-EXE
+          path: |
+            dist/*.exe
+            dist/*.exe.blockmap
+          retention-days: 30
+          if-no-files-found: error
