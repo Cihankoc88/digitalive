@@ -1,0 +1,272 @@
+═══════════════════════════════════════════════════════════════
+  GITHUB İLE OTOMATİK .EXE OLUŞTURMA
+  Adım Adım Rehber — Hiç Kod Yazmazsın
+═══════════════════════════════════════════════════════════════
+
+  TOPLAM SÜRE: 45 dakika (15 dakika senin yapacağın + 20 dakika
+  GitHub'ın otomatik derlemesi + 10 dakika indirme)
+
+  YAPACAKLARIN: Sadece tıkla, sürükle-bırak, bekle.
+  YAPMAYACAKLARIN: Kod yazma, komut yazma, kurulum.
+
+
+═══════════════════════════════════════════════════════════════
+  BÖLÜM 1 — GITHUB HESABI AÇ (5 dakika)
+═══════════════════════════════════════════════════════════════
+
+  ADIM 1: Tarayıcıda şu adrese git:
+          https://github.com
+
+  ADIM 2: Sağ üstte "Sign up" yazıyor. Tıkla.
+
+  ADIM 3: E-postanı yaz. (Hangi e-posta? Gmail veya Acıbadem
+          e-postan olabilir — ama Acıbadem e-posta engelliyse
+          Gmail kullan.)
+
+  ADIM 4: Şifre belirle. (En az 8 karakter, 1 sayı, 1 küçük
+          harf, 1 büyük harf.)
+          Mesela: Cihan2026!
+
+  ADIM 5: Kullanıcı adı seç. (Mesela: ckoc-acibadem)
+
+  ADIM 6: "Email preferences" gelir — "n" yaz veya boş bırak,
+          devam et.
+
+  ADIM 7: Robot doğrulama yap (resimleri seç vb.)
+
+  ADIM 8: "Create account" tıkla.
+
+  ADIM 9: E-postana doğrulama kodu gelir. Kontrol et, 6 haneli
+          kodu GitHub sayfasına yaz.
+
+  ADIM 10: Karşılama sorularını GEÇİŞTİREBİLİRSİN. "Skip" veya
+           "Continue" tıkla. Hiçbir şey önemli değil.
+
+  ✅ Hesap hazır.
+
+
+═══════════════════════════════════════════════════════════════
+  BÖLÜM 2 — YENİ DEPO (REPO) AÇ (5 dakika)
+═══════════════════════════════════════════════════════════════
+
+  "Depo" = bir online klasör. v2.0 dosyalarını burada saklayacak,
+  GitHub buradan .exe yapacak.
+
+  ADIM 11: GitHub'a girmiş olarak, sağ üstte "+" işaretine tıkla.
+           Açılan menüde "New repository" seç.
+
+  ADIM 12: Form çıkar:
+           • Repository name: digitalive yaz
+           • Description: (boş bırak)
+           • Public seçili olsun (DİKKAT: Private değil!)
+             → Public = ücretsiz otomatik build
+             → Private = ayda 2000 dk sınırlı (yine de yeterli)
+           • "Add a README file" KUTUSUNU İŞARETLEME
+           • Diğerleri boş bırak
+
+  ADIM 13: Aşağıda yeşil "Create repository" tıkla.
+
+  ✅ Boş bir depo açıldı.
+
+
+═══════════════════════════════════════════════════════════════
+  BÖLÜM 3 — DOSYALARI YÜKLE (10 dakika)
+═══════════════════════════════════════════════════════════════
+
+  ÖN HAZIRLIK: Bilgisayarında bu paketi (DigitAlive-v2.0-GitHub
+  klasörü) bir yere çıkarmış olmalısın. Klasörün içinde:
+    • Digitalive.html
+    • main.js, db.js, preload.js, schema.js
+    • package.json
+    • OKUBENI.txt
+    • .github (gizli klasör - "Görünmez öğeleri göster"
+      seçeneği ile görünür)
+    • bu README dosyası
+
+  ADIM 14: GitHub'da boş depo sayfasındasın. Ortada bir kutu
+           var, "uploading an existing file" linki var. Tıkla.
+
+  ADIM 15: Yeni bir sayfa açılır. "Drag files here..." yazılı
+           büyük bir alan var. Bilgisayarındaki klasörü AÇ.
+
+  ADIM 16: Klasördeki TÜM dosyaları seç:
+           • Ctrl + A (hepsini seç)
+           • SÜRÜKLE → GitHub sayfasındaki büyük kutuya bırak
+
+           ⚠️ DİKKAT: ".github" gizli klasörü de seçilmeli!
+           Windows'ta gizli dosyalar görünmüyorsa:
+           → Klasör → Görünüm sekmesi → "Gizli öğeler" işaretle
+
+  ADIM 17: Yükleme başlar (1-2 dakika). Tüm dosyalar listelenir.
+
+  ADIM 18: Aşağıda "Commit changes" var. Mesaj kutusuna yaz:
+           "İlk yükleme - DigitAlive v2.0"
+
+  ADIM 19: "Commit changes" yeşil butonuna tıkla.
+
+  ADIM 20: Dosyalar yüklenir (10 saniye). Otomatik depo
+           sayfasına dönersin.
+
+  ✅ Dosyalar GitHub'da.
+
+
+═══════════════════════════════════════════════════════════════
+  BÖLÜM 4 — OTOMATİK BUILD BAŞLAYACAK (1 dakika sen, 20 dk
+              GitHub)
+═══════════════════════════════════════════════════════════════
+
+  Aslında BUILD KENDİSİ BAŞLADI! GitHub Actions otomatik
+  çalışmaya başladı çünkü .github/workflows/build.yml dosyasını
+  yükledin. Şimdi izleyelim.
+
+  ADIM 21: Depo sayfasında üst menüde sekmeler var:
+           Code | Issues | Pull requests | ⚙ Actions | ...
+
+           "Actions" sekmesine tıkla.
+
+  ADIM 22: Bir veya iki workflow çalıştığını göreceksin:
+           "Windows EXE Otomatik Üret"
+           • Yanında SARI nokta = çalışıyor
+           • YEŞİL tik = bitti
+           • KIRMIZI X = hata
+
+  ADIM 23: Workflow'a tıkla. İçinde adımlar görünür:
+           1. Kodu al
+           2. Node.js kur
+           3. Bağımlılıkları indir (npm install)
+           4. Native modülleri derle
+           5. Windows .exe üret
+           6. Dosyaları listele
+           7. .exe dosyalarını yükle
+
+  ADIM 24: ⏰ BEKLE: 15-25 dakika sürebilir. Sayfayı yenileme,
+           kendi kendine güncellenir. Her adım yeşil olunca
+           sonraki başlar.
+
+           Sabret. Bu sürede kahve içebilirsin.
+
+  ADIM 25: Workflow tamamlanınca yeşil tik ışığı yanar.
+
+  ✅ .exe dosyaları hazır!
+
+
+═══════════════════════════════════════════════════════════════
+  BÖLÜM 5 — .EXE DOSYALARINI İNDİR (5 dakika)
+═══════════════════════════════════════════════════════════════
+
+  ADIM 26: Yeşil tik gelen workflow'a tıkla. Sayfanın ALTINA in.
+
+  ADIM 27: "Artifacts" başlığı altında bir dosya görürsün:
+           "DigitAlive-Windows-EXE"
+
+  ADIM 28: Üzerine tıkla. Bilgisayarına bir .zip iner
+           (yaklaşık 200-300 MB, biraz sürer).
+
+  ADIM 29: İndirdiğin .zip'i masaüstüne çıkar. İçinde 2 dosya:
+
+           ✅ Acibadem DigitAlive Setup 2.0.0.exe
+              (Kurulum gerektiren, kalıcı)
+
+           ✅ AcibademDigitAlive-Portable.exe
+              (Kurulum gerektirmez, tek dosya, hemen çalışır)
+
+  ✅ Bittiii! Artık iş bilgisayarında .exe'leri kullanabilirsin.
+
+
+═══════════════════════════════════════════════════════════════
+  BÖLÜM 6 — KULLANIM (5 dakika)
+═══════════════════════════════════════════════════════════════
+
+  SEÇENEK A — Portable:
+    Sadece "AcibademDigitAlive-Portable.exe" dosyasını
+    masaüstüne kopyala. Çift tıkla → program açılır.
+    Kurulum YOK.
+
+  SEÇENEK B — Setup:
+    "Acibadem DigitAlive Setup 2.0.0.exe"e çift tıkla.
+    Kurulum sihirbazı açılır. Next/Next/Install.
+    Masaüstüne kısayol gelir.
+
+  Hangisi olursa olsun, program açılınca:
+    • Üst menüde Dosya | Görünüm | Yardım var
+    • Yardım → Stres Testi: 100.000 Demo Görev Üret
+    • İle 300.000 testi yapabilirsin
+
+
+═══════════════════════════════════════════════════════════════
+  YAYGIN HATALAR VE ÇÖZÜMLER
+═══════════════════════════════════════════════════════════════
+
+  HATA 1: "Aktif workflow yok" — Actions sekmesinde hiçbir şey
+          görünmüyor
+  ÇÖZÜM: ".github/workflows/build.yml" dosyasını YÜKLEMEDİN.
+         BÖLÜM 3 ADIM 16'ya geri dön — gizli klasörü göster ve
+         .github klasörünü de sürükle-bırak.
+
+  HATA 2: Build kırmızı X verdi — bir adımda hata
+  ÇÖZÜM: Workflow sayfasında kırmızı X'in olduğu adıma tıkla,
+         iç içe açılan kayıtları kopyala. Bana gönder, hatayı
+         okuyup düzelteyim.
+
+  HATA 3: Artifacts indirilemiyor (gri görünüyor)
+  ÇÖZÜM: Workflow tamamen yeşil tik almış olmalı. Henüz
+         devam ediyorsa bekle.
+
+  HATA 4: İndirilen .exe çalışmıyor
+  ÇÖZÜM: Antivirüs engellemiş olabilir. "Yine de çalıştır"
+         seç. Veya SmartScreen "More info" → "Run anyway".
+
+
+═══════════════════════════════════════════════════════════════
+  HER GÜNCELLEMEDE NE YAPACAKSIN?
+═══════════════════════════════════════════════════════════════
+
+  İlerde ben yeni sürüm v2.1, v2.2 vb. verirsem:
+  1. Yeni sürüm dosyalarını al
+  2. GitHub depo sayfasına git
+  3. "Add file" → "Upload files" → yeni dosyaları yükle
+  4. Commit changes
+  5. Otomatik tekrar build başlar
+  6. 20 dakika sonra yeni .exe hazır
+
+  Yani her seferinde sıfırdan başlamana gerek YOK. Sadece
+  yeni dosyaları yükle, gerisi otomatik.
+
+
+═══════════════════════════════════════════════════════════════
+  AKLINA TAKILANLAR İÇİN
+═══════════════════════════════════════════════════════════════
+
+  S: Public repo demek herkes görür mü?
+  C: Evet, kodun açık olur ama ücretsiz unlimited build.
+     Acıbadem'e özel kod yok zaten. Gizli tutmak istersen
+     Private yap (2000 dk/ay sınırı yeter).
+
+  S: GitHub para istiyor mu?
+  C: HAYIR. Ücretsiz. Sınırsız Public repo, 500 MB Private.
+
+  S: Acıbadem GitHub'ı engelliyor mu?
+  C: Genelde değil. https://github.com açılıyorsa sorun yok.
+     Açılmıyorsa Acıbadem internet üzerinden Gmail vs.
+     açabiliyorsa GitHub da açılır.
+
+  S: Cihan, sen koddan anlamıyorsun, bunu nasıl yapacaksın?
+  C: Hiç kod yazmıyorsun. Tıklıyorsun, sürüklüyorsun,
+     bekliyorsun. 15 yaşında bir çocuk bile yapabilir.
+
+
+═══════════════════════════════════════════════════════════════
+  BANA NE SÖYLEYECEKSİN?
+═══════════════════════════════════════════════════════════════
+
+  Her bölümü bitirdikçe veya takıldığında bana yaz:
+
+  • "GitHub hesabı açtım" → BÖLÜM 1 ✅
+  • "Depo açtım, dosyaları yükledim" → BÖLÜM 2-3 ✅
+  • "Actions sekmesinde sarı nokta var, çalışıyor" → BÖLÜM 4 başladı
+  • "Yeşil tik aldı, .exe'ler hazır" → BÖLÜM 5 hazır
+  • "İndirdim, program açıldı" → 🎉 BAŞARDIN
+  • "Şu adımda takıldım: ..." → Birlikte çözeriz
+
+
+═══════════════════════════════════════════════════════════════

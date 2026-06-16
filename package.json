@@ -1,0 +1,58 @@
+{
+  "name": "acibadem-digitalive",
+  "version": "2.0.0",
+  "description": "Acıbadem DigitAlive — İş Takip ve Analiz (Masaüstü, 300K Destekli FINAL)",
+  "author": "Cihan Koç",
+  "main": "main.js",
+  "scripts": {
+    "postinstall": "electron-builder install-app-deps",
+    "start": "electron .",
+    "build": "electron-builder --win",
+    "build-portable": "electron-builder --win portable",
+    "build-mac": "electron-builder --mac",
+    "build-linux": "electron-builder --linux",
+    "rebuild": "electron-builder install-app-deps"
+  },
+  "dependencies": {
+    "better-sqlite3": "^11.5.0"
+  },
+  "devDependencies": {
+    "electron": "^31.0.0",
+    "electron-builder": "^24.13.3"
+  },
+  "build": {
+    "appId": "com.acibadem.digitalive",
+    "productName": "Acibadem DigitAlive",
+    "files": [
+      "main.js",
+      "preload.js",
+      "db.js",
+      "schema.js",
+      "Digitalive.html",
+      "icon.png"
+    ],
+    "asarUnpack": [
+      "node_modules/better-sqlite3/**/*"
+    ],
+    "win": {
+      "target": [
+        { "target": "nsis", "arch": ["x64"] },
+        { "target": "portable", "arch": ["x64"] }
+      ],
+      "icon": "icon.png"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "Acibadem DigitAlive"
+    },
+    "portable": {
+      "artifactName": "AcibademDigitAlive-Portable.exe"
+    },
+    "directories": {
+      "output": "dist"
+    }
+  }
+}
